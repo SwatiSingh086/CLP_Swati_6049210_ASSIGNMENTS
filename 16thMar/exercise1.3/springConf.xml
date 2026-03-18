@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+    <context:component-scan base-package="cg.demo.springg.beans.autowiring"/>
+ 
+ 
+ <!--THIS IS FOR APP3-->
+     <bean id="empA" class="cg.demo.springg.beans.Employee3">
+    	<property name="employeeId" value="12345"></property>
+    	<property name="employeeName" value="Swati"></property>
+    	<property name="salary" value="40000.0"></property>
+    </bean>
+    
+    <bean id="empB" class="cg.demo.springg.beans.Employee3">
+    	<property name="employeeId" value="12346"></property>
+    	<property name="employeeName" value="Alena"></property>
+    	<property name="salary" value="40000.0"></property>
+    </bean>
+    
+    <bean id="sbu2" class="cg.demo.springg.beans.SBU2">
+    	<constructor-arg value="BU-PES"></constructor-arg>
+    	<constructor-arg value="Product Engineering Services"></constructor-arg>
+    	<constructor-arg value="Zeus"></constructor-arg>
+    	<constructor-arg>
+    		<list>
+    			<ref bean="empA"></ref>
+    			<ref bean="empB"></ref>
+    		</list>
+    	</constructor-arg>
+    </bean>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<!--  THIS IS OF APP1
+	<bean id="emp1" class="cg.demo.springg.beans.Employeee">
+    	<property name="employeeId" value="12345"></property>
+    	<property name="employeeName" value="Harriet"></property>
+    	<property name="salary" value="40000.0"></property>
+    	<property name="businessUnit" value="PES-BU"></property>
+    	<property name="age" value="30"></property>
+    </bean> -->
+ 
+    <!-- APP2 -->
+    <bean id="emp1" class="cg.demo.springg.beans.Employee2">
+        <property name="employeeId" value="12345"/>
+        <property name="employeeName" value="Harriet"/>
+        <property name="salary" value="40000.0"/>
+        <property name="businessUnit" value="PES-BU"/>
+        <property name="age" value="30"/>
+        <property name="sbu" ref="sbu1"/>
+    </bean>
+ 
+    <bean id="sbu1" class="cg.demo.springg.beans.SBU">
+        <constructor-arg value="101"/>
+        <constructor-arg value="Product Engineering Services"/>
+        <constructor-arg value="Kiran Rao"/>
+    </bean>
+ 
+    <!--   <bean id="emp1" class="cg.demo.springg.beans.Employee">
+         <constructor-arg name="eid" value="101"></constructor-arg>
+          <constructor-arg name="ename" value="Swati"></constructor-arg>
+      	 <constructor-arg name="esalary" value="20000"></constructor-arg>
+        </bean>  -->
+ 
+    <!-- THIS IS OF APP -->
+    <bean id="emp2" class="cg.demo.springg.beans.Employee">
+        <property name="eid" value="102"/>
+        <property name="ename" value="Alena"/>
+        <property name="esalary" value="21000"/>
+        <!--
+        setter injection
+        <bean id="emp1" class="cg.demo.springg.beans.Employeee" autowire="byType">
+        	<property name="eid" value="101"></property>
+        	<property name="ename" value="Swati"></property>
+        	<property name="eSalary" value="55000"></property>
+        </bean>
+ 
+        constructor
+        <bean scope="prototype" id="emp2" class="cg.demo.springg.beans.Employeee">
+        	<constructor-arg index="0" value="102"></constructor-arg>
+        	<constructor-arg value="Swati"></constructor-arg>
+        	<constructor-arg name="eSalary" value="55000"></constructor-arg>
+        	<constructor-arg index="3" ref="add1"></constructor-arg>
+        </bean>
+        <bean id="add1" class="cg.demo.springg.beans.Address">
+        	<property name="address" value="A-208"></property>
+        	<property name="city" value="Ghaziabad"></property>
+        	<property name="state" value="UP"></property>
+        	<property name="zipcode" value="201017"></property>
+        </bean>
+       <bean id="eaddress" class="cg.demo.springg.beans.Address">
+        	<property name="address" value="A-207"></property>
+        	<property name="city" value="Ghaziabad"></property>
+        	<property name="state" value="UP"></property>
+        	<property name="zipcode" value="201017"></property>
+        </bean>
+        -->
+    </bean>
+ 
+</beans>
