@@ -1,0 +1,12 @@
+package Assignment4;
+
+import java.util.List;
+
+public interface IService {
+	  void insert(Employee emp);
+	    Employee fetchById(int id);
+	    List<Employee> fetchAll();
+	    void update(Employee emp);
+	    void delete(int id);
+
+}
